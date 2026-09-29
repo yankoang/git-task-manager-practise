@@ -14,7 +14,19 @@ public class Main {
         System.out.print("Choose an option: ");
         int choice = scanner.nextInt();
 
-        System.out.println("You chose: " + choice);
+        switch(choice) {
+            case 1:
+                System.out.println("Add new task selected.");
+                break;
+            case 2:
+                System.out.println("View tasks selected.");
+                break;
+            case 3:
+                System.out.println("Goodbye!");
+                break;
+            default:
+                System.out.println("Invalid option.");
+        }
 
         scanner.close();
     }
