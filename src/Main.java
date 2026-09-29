@@ -29,7 +29,18 @@ public class Main {
                     System.out.println("Task added.");
                     break;
                 case 2:
-                    System.out.println("View tasks selected.");
+
+                    if(tasks.isEmpty()) {
+                        System.out.println("No tasks found.");
+                    }
+                    else{
+                        System.out.println("Tasks: ");
+
+                        for (int i = 0; i < tasks.size(); i++){
+                            System.out.println((i + 1) + ". " + tasks.get(i));
+                        }
+                    }
+
                     break;
                 case 3:
                     System.out.println("Goodbye!");
