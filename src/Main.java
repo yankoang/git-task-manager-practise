@@ -1,8 +1,10 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        ArrayList<String> tasks = new ArrayList<>();
 
         int choice = 0;
 
@@ -16,10 +18,15 @@ public class Main {
 
             System.out.print("Choose an option: ");
             choice = scanner.nextInt();
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
-                    System.out.println("Add new task selected.");
+                    System.out.print("Enter task: ");
+                    String task = scanner.nextLine();
+
+                    tasks.add(task);
+                    System.out.println("Task added.");
                     break;
                 case 2:
                     System.out.println("View tasks selected.");
