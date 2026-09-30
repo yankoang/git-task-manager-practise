@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<String> tasks = new ArrayList<>();
+        ArrayList<Task> tasks = new ArrayList<>();
 
         int choice = 0;
 
@@ -23,8 +23,9 @@ public class Main {
             switch (choice) {
                 case 1:
                     System.out.print("Enter task: ");
-                    String task = scanner.nextLine();
+                    String description = scanner.nextLine();
 
+                    Task task = new Task(description);
                     tasks.add(task);
                     System.out.println("Task added.");
                     break;
@@ -37,7 +38,7 @@ public class Main {
                         System.out.println("Tasks: ");
 
                         for (int i = 0; i < tasks.size(); i++){
-                            System.out.println((i + 1) + ". " + tasks.get(i));
+                            System.out.println((i + 1) + ". " + tasks.get(i).getDescription());
                         }
                     }
 
