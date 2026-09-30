@@ -19,4 +19,8 @@ public class Task {
         completed = true;
     }
 
+    public void updateDescription(String description) {
+        this.description = description;
+    }
+
 }
