@@ -15,4 +15,8 @@ public class Task {
         return completed;
     }
 
+    public void markCompleted() {
+        completed = true;
+    }
+
 }
