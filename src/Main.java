@@ -158,6 +158,7 @@ public class Main {
 
                     break;
                 case 6:
+                    TaskStorage.saveTasks(tasks);
                     System.out.println("Goodbye!");
                     break;
                 default:
