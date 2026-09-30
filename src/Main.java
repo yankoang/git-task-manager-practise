@@ -8,13 +8,14 @@ public class Main {
 
         int choice = 0;
 
-        while (choice != 3){
+        while (choice != 4){
 
             System.out.println("Task Manager");
 
             System.out.println("1. Add task");
             System.out.println("2. View tasks");
-            System.out.println("3. Exit");
+            System.out.println("3. Complete task");
+            System.out.println("4. Exit");
 
             System.out.print("Choose an option: ");
             choice = scanner.nextInt();
@@ -37,13 +38,55 @@ public class Main {
                     else{
                         System.out.println("Tasks: ");
 
-                        for (int i = 0; i < tasks.size(); i++){
-                            System.out.println((i + 1) + ". " + tasks.get(i).getDescription());
+                        for (int i = 0; i < tasks.size(); i++) {
+                            Task currentTask = tasks.get(i);
+
+                            String status = currentTask.isCompleted() ? "[X]" : "[ ]";
+
+                            System.out.println(
+                                    (i + 1) + ". " + status + " " + currentTask.getDescription()
+                            );
                         }
                     }
 
                     break;
                 case 3:
+                    if (tasks.isEmpty()) {
+                        System.out.println("No tasks found.");
+                    } else {
+                        System.out.println("Tasks:");
+
+                        for (int i = 0; i < tasks.size(); i++) {
+                            Task currentTask = tasks.get(i);
+
+                            String status = currentTask.isCompleted() ? "[X]" : "[ ]";
+
+                            System.out.println(
+                                    (i + 1) + ". " + status + " " + currentTask.getDescription()
+                            );
+                        }
+
+                        System.out.print("Enter task number to complete: ");
+                        int taskNumber = scanner.nextInt();
+                        scanner.nextLine();
+
+                        int taskIndex = taskNumber - 1;
+
+                        if (taskIndex >= 0 && taskIndex < tasks.size()) {
+                            Task selectedTask = tasks.get(taskIndex);
+
+                            if (selectedTask.isCompleted()) {
+                                System.out.println("Task is already completed.");
+                            } else {
+                                selectedTask.markCompleted();
+                                System.out.println("Task completed.");
+                            }
+                        } else {
+                            System.out.println("Invalid task number.");
+                        }
+                    }
+                    break;
+                case 4:
                     System.out.println("Goodbye!");
                     break;
                 default:
