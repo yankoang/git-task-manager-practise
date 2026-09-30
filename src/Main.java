@@ -8,14 +8,15 @@ public class Main {
 
         int choice = 0;
 
-        while (choice != 4){
+        while (choice != 5){
 
             System.out.println("Task Manager");
 
             System.out.println("1. Add task");
             System.out.println("2. View tasks");
             System.out.println("3. Complete task");
-            System.out.println("4. Exit");
+            System.out.println("4. Delete task");
+            System.out.println("5. Exit");
 
             System.out.print("Choose an option: ");
             choice = scanner.nextInt();
@@ -87,6 +88,11 @@ public class Main {
                     }
                     break;
                 case 4:
+
+                    //TODO: Implement task deletion
+
+                    break;
+                case 5:
                     System.out.println("Goodbye!");
                     break;
                 default:
