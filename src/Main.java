@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Task> tasks = new ArrayList<>();
+        ArrayList<Task> tasks = TaskStorage.loadTasks();
 
         int choice = 0;
 
@@ -30,6 +30,7 @@ public class Main {
 
                     Task task = new Task(description);
                     tasks.add(task);
+                    TaskStorage.saveTasks(tasks);
                     System.out.println("Task added.");
                     break;
                 case 2:
@@ -81,6 +82,7 @@ public class Main {
                                 System.out.println("Task is already completed.");
                             } else {
                                 selectedTask.markCompleted();
+                                TaskStorage.saveTasks(tasks);
                                 System.out.println("Task completed.");
                             }
                         } else {
@@ -111,6 +113,8 @@ public class Main {
 
                         if (taskIndex >= 0 && taskIndex < tasks.size()) {
                             Task deletedTask = tasks.remove(taskIndex);
+
+                            TaskStorage.saveTasks(tasks);
 
                             System.out.println(
                                     "Task deleted: " + deletedTask.getDescription()
@@ -149,6 +153,7 @@ public class Main {
                             String newDescription = scanner.nextLine();
 
                             selectedTask.updateDescription(newDescription);
+                            TaskStorage.saveTasks(tasks);
 
                             System.out.println("Task updated.");
                         } else {
