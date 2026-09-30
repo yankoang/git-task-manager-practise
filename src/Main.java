@@ -30,6 +30,7 @@ public class Main {
 
                     Task task = new Task(description);
                     tasks.add(task);
+                    TaskStorage.saveTasks(tasks);
                     System.out.println("Task added.");
                     break;
                 case 2:
@@ -81,6 +82,7 @@ public class Main {
                                 System.out.println("Task is already completed.");
                             } else {
                                 selectedTask.markCompleted();
+                                TaskStorage.saveTasks(tasks);
                                 System.out.println("Task completed.");
                             }
                         } else {
@@ -111,6 +113,8 @@ public class Main {
 
                         if (taskIndex >= 0 && taskIndex < tasks.size()) {
                             Task deletedTask = tasks.remove(taskIndex);
+
+                            TaskStorage.saveTasks(tasks);
 
                             System.out.println(
                                     "Task deleted: " + deletedTask.getDescription()
@@ -149,6 +153,7 @@ public class Main {
                             String newDescription = scanner.nextLine();
 
                             selectedTask.updateDescription(newDescription);
+                            TaskStorage.saveTasks(tasks);
 
                             System.out.println("Task updated.");
                         } else {
@@ -158,7 +163,6 @@ public class Main {
 
                     break;
                 case 6:
-                    TaskStorage.saveTasks(tasks);
                     System.out.println("Goodbye!");
                     break;
                 default:
