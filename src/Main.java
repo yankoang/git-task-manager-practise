@@ -8,7 +8,7 @@ public class Main {
 
         int choice = 0;
 
-        while (choice != 5){
+        while (choice != 6){
 
             System.out.println("Task Manager");
 
@@ -16,7 +16,8 @@ public class Main {
             System.out.println("2. View tasks");
             System.out.println("3. Complete task");
             System.out.println("4. Delete task");
-            System.out.println("5. Exit");
+            System.out.println("5. Edit task");
+            System.out.println("6. Exit");
 
             System.out.print("Choose an option: ");
             choice = scanner.nextInt();
@@ -120,6 +121,11 @@ public class Main {
                     }
                     break;
                 case 5:
+
+                    // TODO: Implement task editing
+
+                    break;
+                case 6:
                     System.out.println("Goodbye!");
                     break;
                 default:
