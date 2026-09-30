@@ -122,7 +122,39 @@ public class Main {
                     break;
                 case 5:
 
-                    // TODO: Implement task editing
+                    if (tasks.isEmpty()) {
+                        System.out.println("No tasks found.");
+                    } else {
+                        System.out.println("Tasks:");
+
+                        for (int i = 0; i < tasks.size(); i++) {
+                            Task currentTask = tasks.get(i);
+                            String status = currentTask.isCompleted() ? "[X]" : "[ ]";
+
+                            System.out.println(
+                                    (i + 1) + ". " + status + " " + currentTask.getDescription()
+                            );
+                        }
+
+                        System.out.print("Enter task number to edit: ");
+                        int taskNumber = scanner.nextInt();
+                        scanner.nextLine();
+
+                        int taskIndex = taskNumber - 1;
+
+                        if (taskIndex >= 0 && taskIndex < tasks.size()) {
+                            Task selectedTask = tasks.get(taskIndex);
+
+                            System.out.print("Enter new description: ");
+                            String newDescription = scanner.nextLine();
+
+                            selectedTask.updateDescription(newDescription);
+
+                            System.out.println("Task updated.");
+                        } else {
+                            System.out.println("Invalid task number.");
+                        }
+                    }
 
                     break;
                 case 6:
