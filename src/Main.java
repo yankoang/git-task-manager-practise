@@ -50,20 +50,12 @@ public class Main {
                         int taskNumber = scanner.nextInt();
                         scanner.nextLine();
 
-                        int taskIndex = taskNumber - 1;
+                        boolean completed = taskManager.completeTask(taskNumber);
 
-                        if (taskIndex >= 0 && taskIndex < taskManager.getTasks().size()) {
-                            Task selectedTask = taskManager.getTasks().get(taskIndex);
-
-                            if (selectedTask.isCompleted()) {
-                                System.out.println("Task is already completed.");
-                            } else {
-                                selectedTask.markCompleted();
-                                TaskStorage.saveTasks(taskManager.getTasks());
-                                System.out.println("Task completed.");
-                            }
+                        if (completed) {
+                            System.out.println("Task completed.");
                         } else {
-                            System.out.println("Invalid task number.");
+                            System.out.println("Invalid task number or task is already completed.");
                         }
                     }
                     break;
@@ -77,13 +69,9 @@ public class Main {
                         int taskNumber = scanner.nextInt();
                         scanner.nextLine();
 
-                        int taskIndex = taskNumber - 1;
+                        Task deletedTask = taskManager.deleteTask(taskNumber);
 
-                        if (taskIndex >= 0 && taskIndex < taskManager.getTasks().size()) {
-                            Task deletedTask = taskManager.getTasks().remove(taskIndex);
-
-                            TaskStorage.saveTasks(taskManager.getTasks());
-
+                        if (deletedTask != null) {
                             System.out.println(
                                     "Task deleted: " + deletedTask.getDescription()
                             );
@@ -93,7 +81,6 @@ public class Main {
                     }
                     break;
                 case 5:
-
                     if (taskManager.getTasks().isEmpty()) {
                         System.out.println("No tasks found.");
                     } else {
@@ -103,17 +90,12 @@ public class Main {
                         int taskNumber = scanner.nextInt();
                         scanner.nextLine();
 
-                        int taskIndex = taskNumber - 1;
+                        System.out.print("Enter new description: ");
+                        String newDescription = scanner.nextLine();
 
-                        if (taskIndex >= 0 && taskIndex < taskManager.getTasks().size()) {
-                            Task selectedTask = taskManager.getTasks().get(taskIndex);
+                        boolean updated = taskManager.editTask(taskNumber, newDescription);
 
-                            System.out.print("Enter new description: ");
-                            String newDescription = scanner.nextLine();
-
-                            selectedTask.updateDescription(newDescription);
-                            TaskStorage.saveTasks(taskManager.getTasks());
-
+                        if (updated) {
                             System.out.println("Task updated.");
                         } else {
                             System.out.println("Invalid task number.");
