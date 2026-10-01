@@ -39,17 +39,7 @@ public class Main {
                         System.out.println("No tasks found.");
                     }
                     else{
-                        System.out.println("Tasks: ");
-
-                        for (int i = 0; i < tasks.size(); i++) {
-                            Task currentTask = tasks.get(i);
-
-                            String status = currentTask.isCompleted() ? "[X]" : "[ ]";
-
-                            System.out.println(
-                                    (i + 1) + ". " + status + " " + currentTask.getDescription()
-                            );
-                        }
+                        TaskPrinter.printTasks(tasks);
                     }
 
                     break;
@@ -57,17 +47,7 @@ public class Main {
                     if (tasks.isEmpty()) {
                         System.out.println("No tasks found.");
                     } else {
-                        System.out.println("Tasks:");
-
-                        for (int i = 0; i < tasks.size(); i++) {
-                            Task currentTask = tasks.get(i);
-
-                            String status = currentTask.isCompleted() ? "[X]" : "[ ]";
-
-                            System.out.println(
-                                    (i + 1) + ". " + status + " " + currentTask.getDescription()
-                            );
-                        }
+                        TaskPrinter.printTasks(tasks);
 
                         System.out.print("Enter task number to complete: ");
                         int taskNumber = scanner.nextInt();
@@ -94,16 +74,7 @@ public class Main {
                     if (tasks.isEmpty()) {
                         System.out.println("No tasks found.");
                     } else {
-                        System.out.println("Tasks:");
-
-                        for (int i = 0; i < tasks.size(); i++) {
-                            Task currentTask = tasks.get(i);
-                            String status = currentTask.isCompleted() ? "[X]" : "[ ]";
-
-                            System.out.println(
-                                    (i + 1) + ". " + status + " " + currentTask.getDescription()
-                            );
-                        }
+                        TaskPrinter.printTasks(tasks);
 
                         System.out.print("Enter task number to delete: ");
                         int taskNumber = scanner.nextInt();
@@ -129,16 +100,7 @@ public class Main {
                     if (tasks.isEmpty()) {
                         System.out.println("No tasks found.");
                     } else {
-                        System.out.println("Tasks:");
-
-                        for (int i = 0; i < tasks.size(); i++) {
-                            Task currentTask = tasks.get(i);
-                            String status = currentTask.isCompleted() ? "[X]" : "[ ]";
-
-                            System.out.println(
-                                    (i + 1) + ". " + status + " " + currentTask.getDescription()
-                            );
-                        }
+                        TaskPrinter.printTasks(tasks);
 
                         System.out.print("Enter task number to edit: ");
                         int taskNumber = scanner.nextInt();
