@@ -19,8 +19,15 @@ public class Main {
             System.out.println("6. Exit");
 
             System.out.print("Choose an option: ");
-            choice = scanner.nextInt();
-            scanner.nextLine();
+
+            if (scanner.hasNextInt()) {
+                choice = scanner.nextInt();
+                scanner.nextLine();
+            } else {
+                System.out.println("Invalid input format. Please enter a number.");
+                scanner.nextLine();
+                continue;
+            }
 
             switch (choice) {
                 case 1:
