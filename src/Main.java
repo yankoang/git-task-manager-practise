@@ -52,14 +52,14 @@ public class Main {
 
                         System.out.print("Enter task number to complete: ");
 
-                        if (!scanner.hasNextInt()) {
-                            System.out.println("Invalid input format. Please enter a number.");
-                            scanner.nextLine();
+                        Integer taskNumber = InputReader.readInt(
+                                scanner,
+                                "Enter task number to complete: "
+                        );
+
+                        if (taskNumber == null) {
                             continue;
                         }
-
-                        int taskNumber = scanner.nextInt();
-                        scanner.nextLine();
 
                         boolean completed = taskManager.completeTask(taskNumber);
 
@@ -78,15 +78,14 @@ public class Main {
 
                         System.out.print("Enter task number to delete: ");
 
-                        if (!scanner.hasNextInt()) {
-                            System.out.println("Invalid input format. Please enter a number.");
-                            scanner.nextLine();
+                        Integer taskNumber = InputReader.readInt(
+                                scanner,
+                                "Enter task number to delete: "
+                        );
+
+                        if (taskNumber == null) {
                             continue;
                         }
-
-
-                        int taskNumber = scanner.nextInt();
-                        scanner.nextLine();
 
                         Task deletedTask = taskManager.deleteTask(taskNumber);
 
@@ -107,14 +106,14 @@ public class Main {
 
                         System.out.print("Enter task number to edit: ");
 
-                        if (!scanner.hasNextInt()) {
-                            System.out.println("Invalid input format. Please enter a number.");
-                            scanner.nextLine();
+                        Integer taskNumber = InputReader.readInt(
+                                scanner,
+                                "Enter task number to edit: "
+                        );
+
+                        if (taskNumber == null) {
                             continue;
                         }
-
-                        int taskNumber = scanner.nextInt();
-                        scanner.nextLine();
 
                         System.out.print("Enter new description: ");
                         String newDescription = scanner.nextLine();
