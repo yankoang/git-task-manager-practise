@@ -18,16 +18,13 @@ public class Main {
             System.out.println("5. Edit task");
             System.out.println("6. Exit");
 
-            System.out.print("Choose an option: ");
+            Integer input = InputReader.readInt(scanner, "Choose an option: ");
 
-            if (scanner.hasNextInt()) {
-                choice = scanner.nextInt();
-                scanner.nextLine();
-            } else {
-                System.out.println("Invalid input format. Please enter a number.");
-                scanner.nextLine();
+            if(input == null) {
                 continue;
             }
+
+            choice = input;
 
             switch (choice) {
                 case 1: //Add tasks
