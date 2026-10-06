@@ -19,18 +19,25 @@ public class Main {
             System.out.println("6. Exit");
 
             System.out.print("Choose an option: ");
-            choice = scanner.nextInt();
-            scanner.nextLine();
+
+            if (scanner.hasNextInt()) {
+                choice = scanner.nextInt();
+                scanner.nextLine();
+            } else {
+                System.out.println("Invalid input format. Please enter a number.");
+                scanner.nextLine();
+                continue;
+            }
 
             switch (choice) {
-                case 1:
+                case 1: //Add tasks
                     System.out.print("Enter task: ");
                     String description = scanner.nextLine();
 
                     taskManager.addTask(description);
                     System.out.println("Task added.");
                     break;
-                case 2:
+                case 2: //View tasks
 
                     if(taskManager.getTasks().isEmpty()) {
                         System.out.println("No tasks found.");
@@ -40,13 +47,20 @@ public class Main {
                     }
 
                     break;
-                case 3:
+                case 3: //Complete task
                     if (taskManager.getTasks().isEmpty()) {
                         System.out.println("No tasks found.");
                     } else {
                         TaskPrinter.printTasks(taskManager.getTasks());
 
                         System.out.print("Enter task number to complete: ");
+
+                        if (!scanner.hasNextInt()) {
+                            System.out.println("Invalid input format. Please enter a number.");
+                            scanner.nextLine();
+                            continue;
+                        }
+
                         int taskNumber = scanner.nextInt();
                         scanner.nextLine();
 
@@ -59,13 +73,21 @@ public class Main {
                         }
                     }
                     break;
-                case 4:
+                case 4: //Delete task
                     if (taskManager.getTasks().isEmpty()) {
                         System.out.println("No tasks found.");
                     } else {
                         TaskPrinter.printTasks(taskManager.getTasks());
 
                         System.out.print("Enter task number to delete: ");
+
+                        if (!scanner.hasNextInt()) {
+                            System.out.println("Invalid input format. Please enter a number.");
+                            scanner.nextLine();
+                            continue;
+                        }
+
+
                         int taskNumber = scanner.nextInt();
                         scanner.nextLine();
 
@@ -80,13 +102,20 @@ public class Main {
                         }
                     }
                     break;
-                case 5:
+                case 5: //Edit task
                     if (taskManager.getTasks().isEmpty()) {
                         System.out.println("No tasks found.");
                     } else {
                         TaskPrinter.printTasks(taskManager.getTasks());
 
                         System.out.print("Enter task number to edit: ");
+
+                        if (!scanner.hasNextInt()) {
+                            System.out.println("Invalid input format. Please enter a number.");
+                            scanner.nextLine();
+                            continue;
+                        }
+
                         int taskNumber = scanner.nextInt();
                         scanner.nextLine();
 
@@ -103,7 +132,7 @@ public class Main {
                     }
 
                     break;
-                case 6:
+                case 6: //Exit
                     System.out.println("Goodbye!");
                     break;
                 default:
