@@ -18,16 +18,13 @@ public class Main {
             System.out.println("5. Edit task");
             System.out.println("6. Exit");
 
-            System.out.print("Choose an option: ");
+            Integer input = InputReader.readInt(scanner, "Choose an option: ");
 
-            if (scanner.hasNextInt()) {
-                choice = scanner.nextInt();
-                scanner.nextLine();
-            } else {
-                System.out.println("Invalid input format. Please enter a number.");
-                scanner.nextLine();
+            if(input == null) {
                 continue;
             }
+
+            choice = input;
 
             switch (choice) {
                 case 1: //Add tasks
@@ -55,14 +52,14 @@ public class Main {
 
                         System.out.print("Enter task number to complete: ");
 
-                        if (!scanner.hasNextInt()) {
-                            System.out.println("Invalid input format. Please enter a number.");
-                            scanner.nextLine();
+                        Integer taskNumber = InputReader.readInt(
+                                scanner,
+                                "Enter task number to complete: "
+                        );
+
+                        if (taskNumber == null) {
                             continue;
                         }
-
-                        int taskNumber = scanner.nextInt();
-                        scanner.nextLine();
 
                         boolean completed = taskManager.completeTask(taskNumber);
 
@@ -81,15 +78,14 @@ public class Main {
 
                         System.out.print("Enter task number to delete: ");
 
-                        if (!scanner.hasNextInt()) {
-                            System.out.println("Invalid input format. Please enter a number.");
-                            scanner.nextLine();
+                        Integer taskNumber = InputReader.readInt(
+                                scanner,
+                                "Enter task number to delete: "
+                        );
+
+                        if (taskNumber == null) {
                             continue;
                         }
-
-
-                        int taskNumber = scanner.nextInt();
-                        scanner.nextLine();
 
                         Task deletedTask = taskManager.deleteTask(taskNumber);
 
@@ -110,14 +106,14 @@ public class Main {
 
                         System.out.print("Enter task number to edit: ");
 
-                        if (!scanner.hasNextInt()) {
-                            System.out.println("Invalid input format. Please enter a number.");
-                            scanner.nextLine();
+                        Integer taskNumber = InputReader.readInt(
+                                scanner,
+                                "Enter task number to edit: "
+                        );
+
+                        if (taskNumber == null) {
                             continue;
                         }
-
-                        int taskNumber = scanner.nextInt();
-                        scanner.nextLine();
 
                         System.out.print("Enter new description: ");
                         String newDescription = scanner.nextLine();
